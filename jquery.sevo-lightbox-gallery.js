@@ -3,6 +3,7 @@
 
         let settings = $.extend({
             overlayBackgroundColor: "rgba(0, 0, 0, .9)",
+            overlayZIndex: "999",
             closeContent: "Close", 
             imageMaxWidth: "80%",
             imageMaxHeight: "80%",
@@ -83,7 +84,8 @@
                     "bottom": "0px",
                     "width": "100%",
                     "height": "100%", 
-                    "display": "none"
+                    "display": "none",
+                    "z-index": settings.overlayZIndex
                 });
 
                 overlay.attr("id", settings.overlayID);
