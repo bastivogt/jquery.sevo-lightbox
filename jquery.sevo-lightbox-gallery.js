@@ -6,7 +6,8 @@
             closeContent: "Close", 
             imageMaxWidth: "80%",
             imageMaxHeight: "80%",
-            overlayID: "sevo-lightbox-overlay"
+            overlayID: "sevo-lightbox-overlay", 
+            closeAtClick: false
         }, options);
 
         return this.each(function() {
@@ -14,7 +15,7 @@
             let overlayInner;
             let img;
             let closeBtn;
-            setOverlayProps();
+            buildLightbox();
 
             $(this).find("a").on("click", function(e) {
                 e.preventDefault();
@@ -33,14 +34,26 @@
                 overlay.show();
             });
 
-            closeBtn.on("click", function(e) {
-                e.stopPropagation();
+            function close() {
                 img.remove();
                 overlay.hide();
                 $("html").css("overflow", "auto");
+            }
+
+            closeBtn.on("click", function(e) {
+                e.stopPropagation();
+                close();
             });
 
-            function setOverlayProps() {
+
+            if(settings.closeAtClick) {
+                overlayInner.on("click", function(e) {
+                    e.stopPropagation();
+                    close();
+                });
+            }
+
+            function buildLightbox() {
                 overlay = $("<div></div>");
                 overlay.css({
                     "background-color": settings.overlayBackgroundColor,
