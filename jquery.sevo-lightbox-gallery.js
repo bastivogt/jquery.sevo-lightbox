@@ -7,7 +7,8 @@
             imageMaxWidth: "80%",
             imageMaxHeight: "80%",
             overlayID: "sevo-lightbox-overlay", 
-            closeAtClick: false
+            closeAtClick: false,
+            showCaption: true
         }, options);
 
         return this.each(function() {
@@ -16,7 +17,7 @@
             let img;
             let closeBtn;
             let caption;
-            let altText;
+
 
 
 
@@ -27,6 +28,11 @@
             $(this).find("a").on("click", function(e) {
                 e.preventDefault();
                 const href = $(this).attr("href");
+                if(settings.showCaption) {
+                    const altText = $(this).find("img").attr("alt");
+                    caption.text(altText);
+
+                }
                 
                 //altText = $(this).find("img").attr("alt")
 
@@ -38,8 +44,7 @@
                     "max-height": settings.imageMaxHeight
                 });
 
-                altText = $(this).find("img").attr("alt");
-                caption.text(altText);
+
 
                 overlayInner.append(img);
 
@@ -103,15 +108,18 @@
 
                 });
 
-                caption = $("<p></p>");
-                caption.addClass("sevo-ligthbox-caption");
-                caption.css({
-                    "color": "white",
-                    "font-style": "italic",
-                    "position": "absolute",
-                    "bottom": "5px"
+                if(settings.showCaption) {
+                    caption = $("<p></p>");
+                    caption.addClass("sevo-ligthbox-caption");
+                    caption.css({
+                        "color": "white",
+                        "font-style": "italic",
+                        "position": "absolute",
+                        "bottom": "5px"
+    
+                    });
 
-                });
+                }
                 
 
                 closeBtn.addClass("close-btn");
