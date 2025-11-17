@@ -1,6 +1,6 @@
 (function($) {
     console.log("Hello world!");
     $("#gallery").sevoLightbox({
-        closeContent: "Schließen"
+        closeContent: "Schließen",
     });
 }(jQuery));

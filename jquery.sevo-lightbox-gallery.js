@@ -3,7 +3,10 @@
 
         let settings = $.extend({
             overlayBackgroundColor: "rgba(0, 0, 0, .9)",
-            closeContent: "Close"
+            closeContent: "Close", 
+            imageMaxWidth: "80%",
+            imageMaxHeight: "80%",
+            overlayID: "sevo-lightbox-overlay"
         }, options);
 
         return this.each(function() {
@@ -21,8 +24,8 @@
                 img.attr("src", href);
                 img.css({
                     "display": "block",
-                    "max-width": "90%",
-                    "max-height": "90%"
+                    "max-width": settings.imageMaxWidth,
+                    "max-height": settings.imageMaxHeight
                 });
 
                 overlayInner.append(img);
@@ -48,9 +51,9 @@
                     "width": "100%",
                     "height": "100%", 
                     "display": "none"
-
-
                 });
+
+                overlay.attr("id", settings.overlayID);
 
                 overlayInner = $("<div></div>");
                 overlayInner.css({
@@ -71,6 +74,7 @@
                     "cursor": "pointer"
 
                 });
+                closeBtn.addClass("close-btn");
                 overlayInner.append(closeBtn);
                 overlay.append(overlayInner);
                 
