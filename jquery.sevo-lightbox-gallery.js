@@ -7,7 +7,7 @@
             closeContent: "Close", 
             imageMaxWidth: "80%",
             imageMaxHeight: "80%",
-            overlayID: "sevo-lightbox-overlay", 
+            overlayClass: "sevo-lightbox-overlay", 
             closeAtClick: false,
             showCaption: true,
             fadeSpeed: 250
@@ -24,10 +24,12 @@
 
 
             buildLightbox();
+            
+            
 
             
 
-            $(this).find("a").on("click", function(e) {
+            $(this).find("[data-gallery-item]").on("click", function(e) {
                 e.preventDefault();
                 const href = $(this).attr("href");
                 if(settings.showCaption) {
@@ -60,6 +62,8 @@
             function close() {
                 overlay.fadeOut(settings.fadeSpeed, function() {
                     img.remove();
+                    
+
                     overlay.hide();
                     $("html").css("overflow", "auto");
                 });
@@ -94,7 +98,7 @@
                 });
                 overlay.hide();
 
-                overlay.attr("id", settings.overlayID);
+                overlay.addClass(settings.overlayClass);
 
                 overlayInner = $("<div></div>");
                 overlayInner.css({

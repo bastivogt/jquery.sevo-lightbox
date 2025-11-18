@@ -8,7 +8,7 @@ body {
 }
 
 
-ul#gallery{
+ul.gallery{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -17,12 +17,12 @@ ul#gallery{
     gap: 3px;
 }
 
-ul#gallery li {
+ul.gallery li {
     margin: 0;
     padding: 0;
 }
 
-ul#gallery img {
+ul.gallery img {
     width: 200px;
     height: 150px;
     object-fit: cover;
@@ -31,6 +31,6 @@ ul#gallery img {
     transition: all ease .3s;
 }
 
-ul#gallery img:hover {
+ul.gallery img:hover {
     transform: scale(.95);
 }
